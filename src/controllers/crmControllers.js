@@ -30,3 +30,25 @@ export const getContactWithId = (req, res) => {
         res.json(contact)
     })
 }
+
+export const updateContact = (req, res) => {
+    Contact.findOneAndUpdate(
+        { _id: req.params.contactId },
+        req.body,
+        { new: true }, // permet de renvoyer le document une fois modifié
+        (err, contact) => {
+            if (err) {
+                res.send(err)
+            }
+            res.json(contact)
+        })
+}
+
+export const deleteContact = (req, res) => {
+    Contact.findOneAndDelete({ _id: req.params.contactId }, (err, contact) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(contact)
+    })
+}

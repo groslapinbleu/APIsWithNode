@@ -23,6 +23,9 @@ mongoose.connect('mongodb://localhost/CRMdb', {
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
+// rendre accessibles des fichiers statiques
+app.use(express.static('public'))
+
 routes(app)
 
 
